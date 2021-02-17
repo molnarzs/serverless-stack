@@ -242,9 +242,17 @@ switch (script) {
     }
 
     // Prepare app
-    prepareCdk(argv, cliInfo).then(({ config }) =>
-      internals[script](argv, config, cliInfo)
-    );
+     prepareCdk(argv, cliInfo).then(({ config }) => {
+      const res = internals[script](argv, config, cliInfo);
+      res.then(
+        fp.flow(
+          fp.map('status'),
+          fp.indexOf('failed'),
+          fp.tap(found => process.exit(found >= 0))
+        )
+      );
+      return res;
+    });
 
     break;
   }
