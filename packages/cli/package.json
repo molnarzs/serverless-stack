@@ -64,6 +64,7 @@
     "fast-safe-stringify": "^2.0.6",
     "fs-extra": "^9.0.1",
     "jest": "^26.1.0",
+    "lodash-es": "^4.17.15",
     "promise.allsettled": "^1.0.2",
     "source-map-support": "^0.5.19",
     "ts-jest": "^26.1.4",
